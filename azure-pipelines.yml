@@ -9,7 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
   
-
 steps:
 - task: Maven@3
   inputs:
@@ -21,6 +20,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+    
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
