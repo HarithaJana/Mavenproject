@@ -3,11 +3,7 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
-- master
-stages:
-- stage: biuld
-  jobs:
-  - job: build
-    pool:
-     vmImage: ubuntu-latest
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- bash: echo "Hello world"
