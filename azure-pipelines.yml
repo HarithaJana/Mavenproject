@@ -8,7 +8,7 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-  
+
 steps:
 - task: Maven@3
   inputs:
@@ -20,16 +20,21 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '**/*.jar'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-           
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'RND-SBX-SSG-HJANA_01(4b311249-491b-4cd3-bd7a-5fe2c69a3c12)'
+    appType: 'webAppLinux'
+    WebAppName: 'Web-java-WestEurope'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/_HarithaJana.Mavenproject/drop/*.zip'
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    downloadPath: '$(System.ArtifactsDirectory)'
+    ArtifactName: 'drop'
