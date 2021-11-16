@@ -31,7 +31,7 @@ steps:
     azureSubscription: 'RND-SBX-SSG-HJANA_01(4b311249-491b-4cd3-bd7a-5fe2c69a3c12)'
     appType: 'webAppLinux'
     WebAppName: 'Web-java-WestEurope'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/_HarithaJana.Mavenproject/drop/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/*.zip'
 - task: DownloadBuildArtifacts@1
   inputs:
     buildType: 'current'
