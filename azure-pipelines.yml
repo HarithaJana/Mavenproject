@@ -5,6 +5,9 @@
 
 trigger:
 - master
-
+stages:
+- stage: biuld
+  jobs:
+  - job: build
 pool:
   vmImage: ubuntu-latest
