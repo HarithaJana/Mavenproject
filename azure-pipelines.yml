@@ -10,6 +10,6 @@ stages:
     displayName: Build Stage
     jobs:
     - job: Build
-pool:
-  vmImage: 'ubuntu-latest'
+      pool:
+        vmImage: 'ubuntu-latest'
 
