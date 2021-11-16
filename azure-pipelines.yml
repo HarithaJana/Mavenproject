@@ -9,5 +9,5 @@ stages:
 - stage: biuld
   jobs:
   - job: build
-pool:
-  vmImage: ubuntu-latest
+    pool:
+     vmImage: ubuntu-latest
